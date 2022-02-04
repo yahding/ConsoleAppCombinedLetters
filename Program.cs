@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
+using System.IO; // need to use input and output functions 
 using System.Threading.Tasks;
 
 namespace ConsoleAppCombinedLetters
@@ -24,38 +24,63 @@ namespace ConsoleAppCombinedLetters
             //just get the files name only ,with extension just dont use the "withoutExtension"
             // Console.WriteLine(Path.GetFileNameWithoutExtension(file));
         
-               // Console.WriteLine("Please enter the date you want:");
-               // Console.ReadLine(int.)
-
-               // string rundate = ("0220125");
+               // Console.WriteLine("Please enter the date you need:");
+              // int dateSelect = Convert.ToInt32(Console.ReadLine());
+               // string rundate = dateSelect;
                // String rootSource=Directory.GetCurrentDirectory();
                 string sourceDire1 = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Admission\20220125";
                 string sourceDire2 = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Scholarship\20220125";
-                string archiveDirectory = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Archive";
-                // string destinationDire = @"C:\Users\yahon\OneDrive\Desktop\CombinedLetters\Output";
+                string archiveDirectory = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Archive";
+                string destinationDire = @"C:\Users\yahon\OneDrive\Desktop\CombinedLetters\Output";
 
                 try
                 {
                     var inputFiles1 = Directory.EnumerateFiles(sourceDire1, "*.txt");
                     var inputFiles2 = Directory.EnumerateFiles(sourceDire2, "*.txt");
-                    
+                    //var outputFile = Directory.EnumerateFiles(archiveDirectory, "*.txt");
+                // foreach (var outputFile in )
                     foreach (string admissionLetter in inputFiles1) 
                     {
                         string adfileName = admissionLetter.Substring(sourceDire1.Length + 1);
-                        
+                   
 
                         foreach (string scholarLetter in inputFiles2)
                         {
 
                             string scfileName = scholarLetter.Substring(sourceDire2.Length + 1);
                         //Directory.Move(scholarLetter, Path.Combine(archiveDirectory, scfileName));
-                        int result = String.Compare(adfileName, 10, scfileName, 12, 8);  
-                       
-                        
-                        //if (result == 0)
-                         
-                           Console.WriteLine(adfileName + "   " + scfileName);
+                             int result = String.Compare(adfileName, 10, scfileName, 12, 8);
+                             string stID = adfileName.Substring(10, 8);
+
+
+                            if (result == 0)
+                            {
+
+                            using (var output = File.Create(Path.Combine(destinationDire, stID+".txt")))
+                            {
+                                using (var cont1 = File.OpenRead(admissionLetter))
+                                {
+                                    cont1.CopyTo(output);
+                                    
+                                }
+                                //File.AppendAllText(Path.Combine(destinationDire, stID + ".txt"), "\n");
+                                //string alineToInsert = "";
+                                //alineToInsert.CopyTo(output);
+                                output.WriteByte((byte)'\n');
+
+
+                                using (var cont2 = File.OpenRead(scholarLetter))
+                                {
+                                    cont2.CopyTo(output);
+                                }
+                            }
+
+                            Console.WriteLine(adfileName + "   " + scfileName);
+                            
+                            }
                         }
+
+
                         //readline must be outside of the {}
                             Console.ReadLine();
 
