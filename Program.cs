@@ -27,11 +27,11 @@ namespace ConsoleAppCombinedLetters
                // Console.WriteLine("Please enter the date you want:");
                // Console.ReadLine(int.)
 
-               // string rundate = ("20220125");
-             
-                string sourceDire1 = @"C:\Users\yahon\OneDrive\Desktop\CombinedLetters\Input\Admission\20220125";
-                string sourceDire2 = @"C:\Users\yahon\OneDrive\Desktop\CombinedLetters\Input\Scholarship\20220125";
-                string archiveDirectory = @"C:\Users\yahon\OneDrive\Desktop\CombinedLetters\Archive";
+               // string rundate = ("0220125");
+               // String rootSource=Directory.GetCurrentDirectory();
+                string sourceDire1 = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Admission\20220125";
+                string sourceDire2 = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Scholarship\20220125";
+                string archiveDirectory = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Archive";
                 // string destinationDire = @"C:\Users\yahon\OneDrive\Desktop\CombinedLetters\Output";
 
                 try
@@ -56,6 +56,7 @@ namespace ConsoleAppCombinedLetters
                          
                            Console.WriteLine(adfileName + "   " + scfileName);
                         }
+                        //readline must be outside of the {}
                             Console.ReadLine();
 
                     // Directory.Move(admissionLetter, Path.Combine(archiveDirectory, adfileName));
