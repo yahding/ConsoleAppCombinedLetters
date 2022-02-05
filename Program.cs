@@ -28,14 +28,15 @@ namespace ConsoleAppCombinedLetters
                 string dateSelect = Convert.ToString(Console.ReadLine());
                 string rundate = dateSelect;
                 String rootSource=Directory.GetCurrentDirectory();
+                //rootSource = rootSource + @"\..\..\CombinedLetters";  // original testing location
                 //Console.WriteLine(rootSource);
                 
 
-                string sourceDire1 = rootSource + @"\..\..\CombinedLetters\Input\Admission\" + rundate;
+                string sourceDire1 = rootSource + @"\Input\Admission\" + rundate;
                 //Console.WriteLine(sourceDire1);
-                string sourceDire2 = rootSource + @"\..\..\CombinedLetters\Input\Scholarship\" + rundate;
-                string archiveDirectory = rootSource + @"..\..\CombinedLetters\Archive";
-                string destinationDire = rootSource + @"..\..\CombinedLetters\Output";
+                string sourceDire2 = rootSource + @"\Input\Scholarship\" + rundate;
+                string archiveDirectory = rootSource + @"\Archive";
+                string destinationDire = rootSource + @"\Output";
            // Console.WriteLine();  for testing result see if i can find the source location
             //Console.ReadLine();
                 int numCombinedLetters = 0;
