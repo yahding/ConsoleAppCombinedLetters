@@ -24,14 +24,20 @@ namespace ConsoleAppCombinedLetters
             //just get the files name only ,with extension just dont use the "withoutExtension"
             // Console.WriteLine(Path.GetFileNameWithoutExtension(file));
         
-               // Console.WriteLine("Please enter the date you need (Please use yyyymmdd Format):");
-               // int dateSelect = Convert.ToInt32(Console.ReadLine());
-               // string rundate = dateSelect;
-               // String rootSource=Directory.GetCurrentDirectory();
-                string sourceDire1 = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Admission\20220125";
-                string sourceDire2 = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Input\Scholarship\20220125";
-                string archiveDirectory = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Archive";
-                string destinationDire = @"C:\Users\yahon\source\repos\ConsoleAppCombinedLetters\CombinedLetters\Output";
+                Console.WriteLine("Please enter the date you need (Please use yyyymmdd Format):");
+                string dateSelect = Convert.ToString(Console.ReadLine());
+                string rundate = dateSelect;
+                String rootSource=Directory.GetCurrentDirectory();
+                //Console.WriteLine(rootSource);
+                
+
+                string sourceDire1 = rootSource + @"\..\..\CombinedLetters\Input\Admission\" + rundate;
+                //Console.WriteLine(sourceDire1);
+                string sourceDire2 = rootSource + @"\..\..\CombinedLetters\Input\Scholarship\" + rundate;
+                string archiveDirectory = rootSource + @"..\..\CombinedLetters\Archive";
+                string destinationDire = rootSource + @"..\..\CombinedLetters\Output";
+           // Console.WriteLine();  for testing result see if i can find the source location
+            //Console.ReadLine();
                 int numCombinedLetters = 0;
                 Queue<string> qForStID = new Queue<string>();
             try
